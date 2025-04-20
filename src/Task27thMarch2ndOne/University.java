@@ -20,9 +20,11 @@ public class University {
         for (Person p : people) {
             if (p instanceof Student) {
                 ((Student) p).displayStudentInfo();
-            } else if (p instanceof Professor) {
+            }
+            else if (p instanceof Professor) {
                 ((Professor) p).displayProfessorInfo();
-            } else {
+            }
+            else {
                 p.displayInfo();
             }
             System.out.println();
