@@ -11,6 +11,6 @@ public class FullTimeEmployee extends Employee{
 
     public void FullTimeEmployeeInfo(){
         employeeIngo();
-        System.out.println(this.bonus);
+        System.out.print(" "+this.bonus);
     }
 }

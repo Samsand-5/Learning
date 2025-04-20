@@ -11,6 +11,6 @@ public class Employee {
     }
 
     public void employeeIngo(){
-        System.out.println(this.name+" "+this.salary);
+        System.out.print(this.name+" "+this.salary);
     }
 }
