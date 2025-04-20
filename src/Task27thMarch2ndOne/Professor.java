@@ -10,7 +10,7 @@ public class Professor extends Person {
 
     public void displayProfessorInfo() {
         super.displayInfo();
-        System.out.println("Specialization: " + specialization);
+        System.out.println(specialization);
     }
 
     public String getSpecialization() {
