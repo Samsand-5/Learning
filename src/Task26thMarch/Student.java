@@ -11,7 +11,7 @@ public class Student extends Person {
 
     public void displayStudentDetails() {
         displayPersonDetails();
-        System.out.println("\t"+this.studentID);
+        System.out.println(" "+this.studentID);
     }
 
 }

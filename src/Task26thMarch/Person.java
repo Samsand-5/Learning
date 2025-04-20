@@ -11,6 +11,6 @@ public class Person {
     }
 
     public void displayPersonDetails(){
-        System.out.print(this.name+"\t"+this.age);
+        System.out.print(this.name+" "+this.age);
     }
 }
