@@ -4,5 +4,10 @@ public abstract class Payment {
     private double amount;
     private long transactionId;
 
+    Payment(double amount,long transactionId){
+        this.amount=amount;
+        this.transactionId=transactionId;
+    }
+
 
 }
