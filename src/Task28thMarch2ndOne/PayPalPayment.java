@@ -1,14 +1,13 @@
 package Task28thMarch2ndOne;
 
-public class CreditCardPayment extends Payment{
-
-    CreditCardPayment(double amount, long transactionId) {
+public class PayPalPayment extends Payment{
+    PayPalPayment(double amount, long transactionId) {
         super(amount, transactionId);
     }
 
     @Override
     public double processPayment() {
-        double fee = getAmount() * 2;
+        double fee = getAmount() * 3;
         return getAmount() - fee;
     }
 }
