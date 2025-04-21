@@ -9,5 +9,13 @@ public abstract class Payment {
         this.transactionId=transactionId;
     }
 
+    public double getAmount() {
+        return amount;
+    }
 
+    public long getTransactionId() {
+        return transactionId;
+    }
+
+    public abstract double processPayment();
 }
