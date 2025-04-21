@@ -8,6 +8,7 @@ public class CreditCardPayment extends Payment{
 
     @Override
     public double processPayment() {
-        return 0;
+        double fee = getAmount() * 0.02;
+        return getAmount() - fee;
     }
 }
