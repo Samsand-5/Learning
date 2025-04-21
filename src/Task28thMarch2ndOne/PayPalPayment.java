@@ -7,7 +7,7 @@ public class PayPalPayment extends Payment{
 
     @Override
     public double processPayment() {
-        double fee = getAmount() * 3.5;
+        double fee = getAmount() * 0.02;
         return getAmount() - fee;
     }
 }
