@@ -2,11 +2,7 @@ package Task28thMarch1stOne;
 
 abstract public class Calculator {
 
-    int add(int a,int b){
-        return a+b;
-    }
+    abstract int add(int a,int b);
 
-    int sub(int a,int b){
-        return Math.abs(a-b);
-    }
+    abstract int sub(int a,int b);
 }
