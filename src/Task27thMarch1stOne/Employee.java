@@ -10,7 +10,7 @@ public class Employee {
         this.salary = salary;
     }
 
-    public void employeeIngo(){
+    public void employeeInfo(){
         System.out.print(this.name+" "+this.salary);
     }
 }
