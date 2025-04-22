@@ -10,7 +10,7 @@ public class PartTimeEmployee extends Employee{
     }
 
     public void PartTimeEmployeeInfo(){
-        employeeIngo();
+        employeeInfo();
         System.out.print(" "+this.workingHours);
     }
 }
