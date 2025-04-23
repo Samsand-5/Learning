@@ -14,6 +14,7 @@ public class Driver {
 
         // Passengers display
         normalFlight.showPassengers();
+        System.out.println();
         vipFlight.showPassengers();
     }
 }
