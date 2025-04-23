@@ -3,17 +3,17 @@ package Task14thApril;
 public class Driver {
     public static void main(String[] args) {
         //Normal passengers
-        Flight<Passenger> economyFlight = new Flight<>("A113");
-        Passenger john = new Passenger("Soumyodip");
-        economyFlight.addPassenger(john);
+        Flight<Passenger> normalFlight = new Flight<>("A113");
+        Passenger p1 = new Passenger("Soumyodip");
+        normalFlight.addPassenger(p1);
 
         //VIP passengers
         Flight<VipPassenger> vipFlight = new Flight<>("B556");
-        VipPassenger alice = new VipPassenger("Tathagata");
-        vipFlight.addPassenger(alice);
+        VipPassenger p2 = new VipPassenger("Tathagata");
+        vipFlight.addPassenger(p2);
 
         // Passengers display
-        economyFlight.showPassengers();
+        normalFlight.showPassengers();
         vipFlight.showPassengers();
     }
 }
