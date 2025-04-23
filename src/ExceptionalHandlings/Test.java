@@ -7,6 +7,7 @@ public class Test {
         for(int i=0;i<numerator.length;i++){
             System.out.println(divide(numerator[i],denominator[i]));
         }
+        System.out.println("stop now");
     }
     public static int divide(int a,int b){
         try{
