@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class PropagationOfException {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
+
         try {
             System.out.println("Enter two numbers");
             int x = scan.nextInt();
