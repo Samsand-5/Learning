@@ -6,7 +6,7 @@ public class Banking {
         try{
             bankAccount.withdraw(11);
         }
-        catch (Exception e){
+        catch (InsufficientFundsException e){
             System.out.println(e);
         }
     }
