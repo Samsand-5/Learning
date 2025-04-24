@@ -7,7 +7,7 @@ public class Banking {
             bankAccount.withdraw(11);
         }
         catch (Exception e){
-
+            System.out.println(e);
         }
     }
 }
