@@ -10,7 +10,7 @@ public class BankAccount {
 
     public void withdraw(double amount) throws Exception {
         if(amount>balance){
-            throw new Exception("Insufficient Balance");
+            throw new InsufficientFundsException();
         }
         balance-=amount;
     }
