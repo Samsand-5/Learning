@@ -10,6 +10,9 @@ public class Demo1 {
             int y = scan.nextInt();
             System.out.println(x/y);
         }
+        catch (ArithmeticException e) {
+            System.out.println("Arithmetic Exception: " + e.getMessage());
+        }
         catch(Exception e) {
             System.out.println("Exception handled");
         }
