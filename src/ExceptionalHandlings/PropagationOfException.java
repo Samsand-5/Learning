@@ -36,6 +36,7 @@ public class PropagationOfException {
         catch(Exception e) {
             System.out.println("ClassNotFoundException handled");
         }
+        scan.close();
     }
 
 }
