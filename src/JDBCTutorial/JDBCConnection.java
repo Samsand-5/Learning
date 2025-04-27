@@ -3,7 +3,7 @@ package JDBCTutorial;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class Main {
+public class JDBCConnection {
     public static void main(String[] args) {
         try{
             String url = "jdbc:mysql://localhost:3306/MyWork";
