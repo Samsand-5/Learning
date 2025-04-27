@@ -40,7 +40,8 @@ public class OracleDatabaseConnection {
         else
             System.out.println("Insertion failed");
         con.close();
-    } catch (Exception ex) {
+    }
+        catch (Exception ex) {
         System.err.println(ex);
     }
 }
