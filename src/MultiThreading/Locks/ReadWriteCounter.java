@@ -15,10 +15,11 @@ public class ReadWriteCounter {
     private final Lock writeLock = lock.writeLock();
 
 
-    public void increment() {
+    public void increment() throws InterruptedException{
         writeLock.lock();
         try {
             count++;
+            Thread.sleep(50);
         } finally {
             writeLock.unlock();
         }
@@ -50,6 +51,11 @@ public class ReadWriteCounter {
             @Override
             public void run() {
                 for (int i = 0; i < 10; i++) {
+                    try {
+                        counter.increment();
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
                     System.out.println(Thread.currentThread().getName() +
                             "incremented");
                 }
@@ -67,6 +73,8 @@ public class ReadWriteCounter {
         writeThread.join();
         writeThread1.join();
         writeThread2.join();
+
+        System.out.println("Final count: "+counter.getCount());
     }
 }
 
