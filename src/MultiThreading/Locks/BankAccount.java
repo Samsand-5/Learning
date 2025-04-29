@@ -14,6 +14,8 @@ public class BankAccount {
             catch (InterruptedException e){
                 throw new RuntimeException(e);
             }
+            balance-=amount;
+            System.out.println(Thread.currentThread().getName()+" completed withDrawl, Remaining balnce: "+balance);
         }
         else{
             System.out.println(Thread.currentThread().getName()+" insufficient balance");
