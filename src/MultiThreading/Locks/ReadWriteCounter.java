@@ -33,7 +33,7 @@ public class ReadWriteCounter {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException{
         ReadWriteCounter counter = new ReadWriteCounter();
 
         Runnable readTask = new Runnable() {
@@ -64,7 +64,9 @@ public class ReadWriteCounter {
         writeThread1.start();
         writeThread2.start();
 
-
+        writeThread.join();
+        writeThread1.join();
+        writeThread2.join();
     }
 }
 
