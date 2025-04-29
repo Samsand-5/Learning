@@ -2,9 +2,9 @@ package MultiThreading.Locks;
 
 public class BankAccount {
 
-    private int balance=0;
+    private int balance=100;
 
-    public void withDraw(int amount){
+    public synchronized void withDraw(int amount){
         System.out.println(Thread.currentThread().getName()+
                 " withdraw "+amount);
         if(balance>=amount){
@@ -18,7 +18,7 @@ public class BankAccount {
             }
             balance-=amount;
             System.out.println(Thread.currentThread().getName()+
-                    " completed withDrawl, Remaining balnce: "+balance);
+                    " completed withDrawl, Remaining balance: "+balance);
         }
         else{
             System.out.println(Thread.currentThread().getName()+
