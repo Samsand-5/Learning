@@ -7,7 +7,7 @@ public class Customer extends User{
     }
 
     @Override
-    void showProfiles() {
+    void showProfile() {
         System.out.println(this.id+" "+this.name);
     }
 

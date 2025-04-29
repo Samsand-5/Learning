@@ -9,7 +9,7 @@ public class Driver extends User{
     }
 
     @Override
-    void showProfiles() {
+    void showProfile() {
         System.out.println(this.available+" "+this.name);
     }
 

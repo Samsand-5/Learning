@@ -25,7 +25,7 @@ public class Main {
             System.out.println("5. Save Data and Exit");
             System.out.print("Choose an option: ");
             int option = sc.nextInt();
-            sc.nextLine(); // consume newline
+            sc.nextLine();
 
             switch (option) {
                 case 1:

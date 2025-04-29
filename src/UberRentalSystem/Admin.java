@@ -11,7 +11,7 @@ public class Admin extends User{
     }
 
     @Override
-    void showProfiles() {
+    void showProfile() {
         Class<SecurityCheck> c=SecurityCheck.class;
         SecurityCheck s=c.getDeclaredAnnotation(SecurityCheck.class);
         System.out.println(this.name+" "+s.role());

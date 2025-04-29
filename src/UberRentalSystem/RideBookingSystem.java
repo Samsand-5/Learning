@@ -3,12 +3,10 @@ package UberRentalSystem;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.util.List;
-import java.util.stream.Stream;
+import java.util.Optional;
 
 public class RideBookingSystem {
     List<Customer> customers;
@@ -24,16 +22,26 @@ public class RideBookingSystem {
     }
 
     Ride bookRide(Customer customer) {
-        Stream<Driver> driver_stream=drivers.stream();
-        driver_stream.filter((driver) -> driver.isAvailable()==true);
-        if(driver_stream.count()==0) {
-            throw new InvalidRideException("sorry no rides are available...go to destination via public transport");
+//        Stream<Driver> driver_stream=drivers.stream();
+//        driver_stream.filter((driver) -> driver.isAvailable()==true);
+//        if(driver_stream.count()==0) {
+//            throw new InvalidRideException("sorry no rides are available...go to destination via public transport");
+//        }
+//        else {
+//            Object[] available_driver=driver_stream.toArray();//Stream is extracting Object type
+//            Ride ride=new Ride(customer,(Driver)available_driver[0]);
+//            return ride;
+//        }
+
+        Optional<Driver> driverOpt = drivers.stream().filter(Driver::isAvailable).findFirst();
+        if (driverOpt.isEmpty()) {
+            throw new InvalidRideException("No drivers available.");
         }
-        else {
-            Object[] available_driver=driver_stream.toArray();//Stream is extracting Object type
-            Ride ride=new Ride(customer,(Driver)available_driver[0]);
-            return ride;
-        }
+        Driver driver = driverOpt.get();
+        driver.setAvailability(false);
+        Ride ride = new Ride(customer, driver);
+        rides.add(ride);
+        return ride;
     }
 
     void saveRides() throws Exception{
@@ -93,7 +101,7 @@ public class RideBookingSystem {
 
     void showAllDrivers() {
         for(Driver driver : drivers) {
-            driver.showProfiles();
+            driver.showProfile();
         }
     }
 }
