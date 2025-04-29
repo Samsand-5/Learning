@@ -7,11 +7,11 @@ public class MyThread extends Thread{
 
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException{
         MyThread t1=new MyThread();
         System.out.println(t1.getState());
         t1.start();
         System.out.println(t1.getState());
-        System.out.println(Thread.currentThread().getState());
+        Thread.sleep(100);
     }
 }
