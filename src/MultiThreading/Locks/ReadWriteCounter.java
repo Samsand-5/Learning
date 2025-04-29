@@ -20,6 +20,9 @@ public class ReadWriteCounter {
         try {
             count++;
             Thread.sleep(50);
+        }
+        catch (InterruptedException e){
+            throw new RuntimeException(e);
         } finally {
             writeLock.unlock();
         }
@@ -63,8 +66,8 @@ public class ReadWriteCounter {
         };
 
         Thread writeThread=new Thread(writeTask);
-        Thread writeThread1=new Thread(writeTask);
-        Thread writeThread2=new Thread(writeTask);
+        Thread writeThread1=new Thread(readTask);
+        Thread writeThread2=new Thread(readTask);
 
         writeThread.start();
         writeThread1.start();
