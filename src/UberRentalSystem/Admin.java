@@ -25,12 +25,11 @@ public class Admin extends User{
             Iterator itr=drivers.iterator();
             while(itr.hasNext()) {
                 Driver d=(Driver)itr.next();
-                if(d.id==driverId) {
+                if(d.id.equals(driverId)) {
                     itr.remove();
                     break;
                 }
             }
         }
     }
-
 }
