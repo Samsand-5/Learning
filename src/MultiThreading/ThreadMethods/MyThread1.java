@@ -34,10 +34,17 @@ public class MyThread1 extends Thread{
     }
 
     public static void main(String[] args) throws InterruptedException{
-        MyThread1 t1=new MyThread1("Soumyodip");
+        MyThread1 t1=new MyThread1("LOW");
+        MyThread1 t2=new MyThread1("MEDIUM");
+        MyThread1 t3=new MyThread1("HIGH");
 //        t1.start();
 //        t1.join();
         System.out.println("Hello");
+        t1.setPriority(Thread.MIN_PRIORITY);
+        t2.setPriority(Thread.NORM_PRIORITY);
+        t3.setPriority(Thread.MAX_PRIORITY);
         t1.start();
+        t2.start();
+        t3.start();
     }
 }
