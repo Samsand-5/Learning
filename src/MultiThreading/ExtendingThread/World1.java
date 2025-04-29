@@ -1,6 +1,6 @@
-package MultiThreading;
+package MultiThreading.ExtendingThread;
 
-public class World extends Thread{
+public class World1 extends Thread{
 
     @Override
     public void run(){
