@@ -32,5 +32,39 @@ public class ReadWriteCounter {
             readLock.unlock();
         }
     }
+
+    public static void main(String[] args) {
+        ReadWriteCounter counter = new ReadWriteCounter();
+
+        Runnable readTask = new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i < 10; i++) {
+                    System.out.println(Thread.currentThread().getName() +
+                            "read: " + counter.getCount());
+                }
+            }
+        };
+
+        Runnable writeTask = new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i < 10; i++) {
+                    System.out.println(Thread.currentThread().getName() +
+                            "incremented");
+                }
+            }
+        };
+
+        Thread writeThread=new Thread(writeTask);
+        Thread writeThread1=new Thread(writeTask);
+        Thread writeThread2=new Thread(writeTask);
+
+        writeThread.start();
+        writeThread1.start();
+        writeThread2.start();
+
+
+    }
 }
 
