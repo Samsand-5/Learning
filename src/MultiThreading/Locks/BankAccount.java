@@ -12,7 +12,7 @@ public class BankAccount {
 
     public void withDraw(int amount){
         System.out.println(Thread.currentThread().getName()+
-                " atempting withdraw "+amount);
+                " attempting withdraw "+amount);
         try {
             if (lock.tryLock(1000, TimeUnit.MILLISECONDS)) {
                 if(balance>=amount) {
@@ -25,6 +25,7 @@ public class BankAccount {
                                 " completed withdrawal, Remaining balance: " + balance);
                     }
                     catch (Exception e){
+                        Thread.currentThread().interrupt();
                     }
                     finally {
                         lock.unlock();
@@ -40,6 +41,7 @@ public class BankAccount {
             }
         }
         catch (Exception e){
+            Thread.currentThread().interrupt();
         }
     }
 }
