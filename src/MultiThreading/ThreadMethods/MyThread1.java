@@ -33,13 +33,21 @@ public class MyThread1 extends Thread{
 //        }
 //    }
 
+//    @Override
+//    public void run(){
+//        try {
+//            Thread.sleep(1000);
+//            System.out.println("Thread");
+//        } catch (InterruptedException e) {
+//            System.out.println("Thread interupted "+e);
+//        }
+//    }
+
     @Override
     public void run(){
-        try {
-            Thread.sleep(1000);
-            System.out.println("Thread");
-        } catch (InterruptedException e) {
-            System.out.println("Thread interupted "+e);
+        for(int i=0;i<5;i++){
+            System.out.println(Thread.currentThread().getName()+" is running");
+            Thread.yield();
         }
     }
 
@@ -57,8 +65,14 @@ public class MyThread1 extends Thread{
 //        t2.start();
 //        t3.start();
 
+//        MyThread1 t1=new MyThread1("MESSI");
+//        t1.start();
+//        t1.interrupt();
+
+
         MyThread1 t1=new MyThread1("MESSI");
+        MyThread1 t2=new MyThread1("RONALDO");
         t1.start();
-        t1.interrupt();
+        t2.start();
     }
 }
