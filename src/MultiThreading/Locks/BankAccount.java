@@ -8,6 +8,12 @@ public class BankAccount {
         System.out.println(Thread.currentThread().getName()+" withdraw "+amount);
         if(balance>=amount){
             System.out.println(Thread.currentThread().getName()+" proceeding withdraw");
+            try {
+                Thread.sleep(3000);
+            }
+            catch (InterruptedException e){
+                throw new RuntimeException(e);
+            }
         }
         else{
             System.out.println(Thread.currentThread().getName()+" insufficient balance");
