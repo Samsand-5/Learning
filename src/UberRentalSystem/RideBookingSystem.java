@@ -37,7 +37,7 @@ public class RideBookingSystem {
     }
 
     void saveRides() throws Exception{
-        String path="U+202AC:\\Users\\User\\Desktop\\Uber\\rides.txt";
+        String path="C:\\Users\\User\\Desktop\\Uber\\rides.txt";
         File file=new File(path);
         for(Ride ride: rides) {
             String message=ride.rideDetails();
@@ -53,7 +53,7 @@ public class RideBookingSystem {
     }
 
     void loadDriverFromFile() throws Exception {
-        String path="U+202AC:\\Users\\User\\Desktop\\Uber\\rides.txt";
+        String path="C:\\Users\\User\\Desktop\\Uber\\rides.txt";
         File file=new File(path);
         try(BufferedReader br=new BufferedReader(new FileReader(file))){
             String line;
@@ -76,7 +76,7 @@ public class RideBookingSystem {
     }
 
     void saveDriversToFile() throws Exception{
-        String path="U+202AC:\\Users\\User\\Desktop\\Uber\\drivers.txt";
+        String path="C:\\Users\\User\\Desktop\\Uber\\drivers.txt";
         File file=new File(path);
         for(Driver driver: drivers) {
             String message=driver.getID()+","+driver.getName();
