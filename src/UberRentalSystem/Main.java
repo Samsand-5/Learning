@@ -49,19 +49,26 @@ public class Main {
                 case 3:
                     System.out.print("Enter customer ID to book ride: ");
                     String id = sc.nextLine();
-                    Optional<Customer> customer = system.customers.stream()
-                            .filter(c -> c.id.equals(id)).findFirst();
-                    if (customer.isEmpty()) {
-                        System.out.println("Customer not found.");
-                    } else {
-                        try {
-                            Ride ride = system.bookRide(customer.get());
-                            System.out.println("Ride Booked: " + ride.rideDetails());
-                        } catch (InvalidRideException e) {
-                            System.out.println(e.getMessage());
-                        }
-                    }
+
+                    system.customers.stream()
+                            .filter(c -> c.id.equals(id))
+                            .findFirst()
+                            .map(customerFound -> {
+                                try {
+                                    Ride ride = system.bookRide(customerFound);
+                                    System.out.println("Ride Booked: " + ride.rideDetails());
+                                } catch (InvalidRideException e) {
+                                    System.out.println(e.getMessage());
+                                }
+                                return customerFound;
+                            })
+                            .orElseGet(() -> {
+                                System.out.println("Customer not found.");
+                                return null;
+                            });
+
                     break;
+
 
                 case 4:
                     system.showAllDrivers();

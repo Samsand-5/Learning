@@ -22,24 +22,12 @@ public class RideBookingSystem {
     }
 
     Ride bookRide(Customer customer) {
-//        Stream<Driver> driver_stream=drivers.stream();
-//        driver_stream.filter((driver) -> driver.isAvailable()==true);
-//        if(driver_stream.count()==0) {
-//            throw new InvalidRideException("sorry no rides are available...go to destination via public transport");
-//        }
-//        else {
-//            Object[] available_driver=driver_stream.toArray();//Stream is extracting Object type
-//            Ride ride=new Ride(customer,(Driver)available_driver[0]);
-//            return ride;
-//        }
 
-        Optional<Driver> driverOpt = drivers.stream().filter(Driver::isAvailable).findFirst();
-        if (driverOpt.isEmpty()) {
-            throw new InvalidRideException("No drivers available.");
-        }
-        Driver driver = driverOpt.get();
-        driver.setAvailability(false);
-        Ride ride = new Ride(customer, driver);
+        Driver availableDriver = drivers.stream().filter(Driver::isAvailable).findFirst()
+                .orElseThrow(() -> new InvalidRideException("No available drivers."));
+
+        availableDriver.setAvailability(false);
+        Ride ride = new Ride(customer, availableDriver);
         rides.add(ride);
         return ride;
     }
