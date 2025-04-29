@@ -5,7 +5,7 @@ class  SharedResource{
 
     private boolean hasData;
 
-    public void produce(int value){
+    public synchronized void produce(int value){
         while (hasData){
             try {
                 wait();
@@ -16,12 +16,23 @@ class  SharedResource{
         }
         data=value;
         hasData=true;
+        System.out.println("Produced: "+value);
         notify();
     }
 
-    public int consume(){
-
-        return 0;
+    public synchronized int consume(){
+        while (!hasData){
+            try {
+                wait();
+            }
+            catch (InterruptedException e){
+                Thread.currentThread().interrupt();
+            }
+        }
+        hasData=false;
+        System.out.println("Consumed: "+data);
+        notify();
+        return data;
     }
 }
 
@@ -36,7 +47,6 @@ class Producer implements Runnable{
     public void run() {
         for(int i=0;i<10;i++){
             resource.produce(i);
-            System.out.println("Produced: "+i);
         }
     }
 }
@@ -52,7 +62,6 @@ class Consumer implements Runnable{
     public void run() {
         for(int i=0;i<10;i++){
             int value=resource.consume();
-            System.out.println("Consumed: "+value);
         }
     }
 }
