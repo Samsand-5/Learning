@@ -25,10 +25,9 @@ public class BankAccount {
                                 " completed withDrawl, Remaining balance: " + balance);
                     }
                     catch (Exception e){
-                        e.printStackTrace();
                     }
                     finally {
-
+                        lock.unlock();
                     }
                 }
                 else{
@@ -36,8 +35,11 @@ public class BankAccount {
                             " insufficient balance");
                 }
             }
-        }catch (Exception e){
-
+            else{
+                System.out.println(Thread.currentThread().getName()+" couldnot acquire the lock");
+            }
+        }
+        catch (Exception e){
         }
     }
 }
