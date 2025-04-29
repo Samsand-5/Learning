@@ -6,13 +6,31 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class ReadWriteCounter {
 
-    private int count=0;
+    private int count = 0;
 
-    private final ReadWriteLock lock=new ReentrantReadWriteLock();
+    private final ReadWriteLock lock = new ReentrantReadWriteLock();
 
-    private final Lock readLock=lock.readLock();
+    private final Lock readLock = lock.readLock();
 
-    private final Lock writeLock=lock.writeLock();
+    private final Lock writeLock = lock.writeLock();
 
 
+    public void increment() {
+        writeLock.lock();
+        try {
+            count++;
+        } finally {
+            writeLock.unlock();
+        }
+    }
+
+    public int getCount() {
+        readLock.lock();
+        try {
+            return count;
+        } finally {
+            readLock.unlock();
+        }
+    }
 }
+
