@@ -1,11 +1,11 @@
 package MultiThreading.Locks;
 
+//Maximizes throughput
+
 import java.util.concurrent.locks.ReentrantLock;
 
-//Guarantees FIFO order
-
-public class FairnessLockExample {
-    private static final ReentrantLock lock = new ReentrantLock(true);
+public class UnfairnessLockExample {
+    private static final ReentrantLock lock = new ReentrantLock(false); // fairness = false
 
     public static void main(String[] args) {
         for (int i = 1; i <= 5; i++) {
