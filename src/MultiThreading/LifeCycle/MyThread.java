@@ -18,5 +18,6 @@ public class MyThread extends Thread{
         t1.start();
         System.out.println(t1.getState());
         Thread.sleep(100);
+        System.out.println(t1.getState());
     }
 }
