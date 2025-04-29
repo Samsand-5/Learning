@@ -12,7 +12,7 @@ public class BankAccount {
 
     public void withDraw(int amount){
         System.out.println(Thread.currentThread().getName()+
-                " withdraw "+amount);
+                " atempting withdraw "+amount);
         try {
             if (lock.tryLock(1000, TimeUnit.MILLISECONDS)) {
                 if(balance>=amount) {
@@ -22,7 +22,7 @@ public class BankAccount {
                         Thread.sleep(3000);
                         balance -= amount;
                         System.out.println(Thread.currentThread().getName() +
-                                " completed withDrawl, Remaining balance: " + balance);
+                                " completed withdrawal, Remaining balance: " + balance);
                     }
                     catch (Exception e){
                     }
@@ -36,7 +36,7 @@ public class BankAccount {
                 }
             }
             else{
-                System.out.println(Thread.currentThread().getName()+" couldnot acquire the lock");
+                System.out.println(Thread.currentThread().getName()+" couldn't acquire the lock,will try later");
             }
         }
         catch (Exception e){
