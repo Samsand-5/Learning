@@ -22,7 +22,6 @@ public class ReentrantLockExample {
         lock.lock();
         try{
             System.out.println("Inner method");
-            innerMethod();
         }
         finally {
             lock.unlock();
