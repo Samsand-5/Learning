@@ -1,8 +1,6 @@
 package MultiThreading.CompletableFuture;
 
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 public class CFExample3 {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
@@ -44,5 +42,19 @@ public class CFExample3 {
             return "ok";
         }).orTimeout(1, TimeUnit.SECONDS).exceptionally(s->"Timeout occured");
         System.out.println(ff2.get());
+
+        //Controlling thread type by providing custom executor service
+        //Basically it often runs on daemon threads
+        Executor executor =Executors.newFixedThreadPool(3);
+        CompletableFuture<String> ff3 = CompletableFuture.supplyAsync(() -> {
+            try {
+                Thread.sleep(5000);
+                System.out.println("worker");
+            } catch (Exception e) {
+
+            }
+            return "ok";
+        },executor).orTimeout(1, TimeUnit.SECONDS).exceptionally(s->"Timeout occured");
+        System.out.println(ff3.get());
     }
 }
