@@ -1,21 +1,27 @@
 package MultiThreading.ExecutorsFrameWork;
 
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import java.util.concurrent.*;
 
 public class Future2 {
     public static void main(String[] args) {
 
         ExecutorService executorService= Executors.newSingleThreadExecutor();
-        Future<Integer> future=executorService.submit(() ->42);
+        Future<Integer> future=executorService.submit(() ->{
+            try {
+                Thread.sleep(2000);
+            }
+            catch (InterruptedException e){
+                System.out.println("Exception occurred! "+e);
+            }
+            return 42;
+        });
         Integer i=null;
         try {
-            i=future.get();
+            i=future.get(1, TimeUnit.SECONDS);
+            System.out.println(future.isDone());
             System.out.println(i);
         }
-        catch (InterruptedException | ExecutionException e){
+        catch (InterruptedException | ExecutionException | TimeoutException e){
             System.out.println("Exception occurred! "+ e);
         }
     }
