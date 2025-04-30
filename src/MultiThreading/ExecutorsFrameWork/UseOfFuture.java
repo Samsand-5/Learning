@@ -24,5 +24,11 @@ public class UseOfFuture {
         Future<?> future2=executorService2.submit(() -> System.out.println("Hello Normal"));
         System.out.println(future2.get());
         executorService2.shutdown();
+
+        ExecutorService executorService3= Executors.newSingleThreadExecutor();
+        Future<?> future3=executorService3.submit(() -> System.out.println("Hello Normal"));
+        future3.get();
+        executorService2.shutdown();
+        Future<String> submit=executorService3.submit(() -> System.out.println("Hello"),"success");
     }
 }
