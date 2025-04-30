@@ -29,4 +29,20 @@ public class CyclicBarrierUseCase {
 
 class Subsytem implements Runnable{
 
+    private String name;
+    private int initializationTime;
+    private CyclicBarrier barrier;
+
+    public Subsytem(String name,int initializationTime,CyclicBarrier barrier){
+        this.name=name;
+        this.initializationTime=initializationTime;
+        this.barrier=barrier;
+    }
+
+    @Override
+    public void run() {
+
+    }
+
+
 }
