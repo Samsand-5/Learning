@@ -14,6 +14,16 @@ public class MainExe {
             );
             threads[i-1].start();
         }
+
+        //wait for all threads in a list to finish
+        for(Thread thread : threads){
+            try{
+                thread.join();//causes the current thread to wait until the specified thread has finished executing
+            }
+            catch (InterruptedException e){
+                Thread.currentThread().interrupt();//restores the interrupt status
+            }
+        }
         System.out.println("Total time: "+(System.currentTimeMillis()-startTime));
     }
 
