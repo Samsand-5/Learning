@@ -1,30 +1,21 @@
 package MultiThreading.ExecutorsFrameWork;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 public class MainExe {
 
     public static void main(String[] args) {
         long startTime=System.currentTimeMillis();
-        Thread[] threads=new Thread[9];
+        ExecutorService executor=Executors.newFixedThreadPool(3);
         for(int i=1;i<10;i++) {
             int finalI = i;
-            threads[i-1]=new Thread(
-                    ()->{
-                        long result=factorial(finalI);
-                        System.out.println(result);
-                    }
-            );
-            threads[i-1].start();
+            executor.submit(  () ->{
+                long result=factorial(finalI);
+                System.out.println(result);
+            });
         }
-
-        //wait for all threads in a list to finish
-        for(Thread thread : threads){
-            try{
-                thread.join();//causes the current thread to wait until the specified thread has finished executing
-            }
-            catch (InterruptedException e){
-                Thread.currentThread().interrupt();//restores the interrupt status
-            }
-        }
+        executor.shutdown();
         System.out.println("Total time: "+(System.currentTimeMillis()-startTime));
     }
 
