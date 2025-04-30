@@ -26,5 +26,6 @@ public class CFExample2 {
 
         CompletableFuture<Void> f = CompletableFuture.allOf(f1, f2);
         f.join();
+        System.out.println("Main");
     }
 }
