@@ -43,13 +43,22 @@ public class UseOfFuture {
 
         ExecutorService executorService5=Executors.newFixedThreadPool(2);
 
-        Callable<Integer> callable1=()->1;
-        Callable<Integer> callable2=()->2;
-        Callable<Integer> callable3=()->3;
+        Callable<Integer> callable1=()->{
+            System.out.println("Task 1");
+            return 1;
+        };
+        Callable<Integer> callable2=()->{
+            System.out.println("Task 2");
+            return 2;
+        };;
+        Callable<Integer> callable3=()->{
+            System.out.println("Task 3");
+            return 3;
+        };;
 
         List<Callable<Integer>> list=Arrays.asList(callable1,callable2,callable3);
-        executorService5.invokeAll(list);
 
+        List<Future<Integer>> futures=executorService5.invokeAll(list);
         executorService5.shutdown();
     }
 }
