@@ -4,7 +4,7 @@ import java.util.concurrent.*;
 
 //CountDownLatch is used when we need to wait 1 or more than 1 threads to accomplish task
 
-public class Main13 {
+public class CountDownLatchUsingCallable {
     public static void main(String[] args) throws ExecutionException,InterruptedException {
         int numberOfServices=3;
         ExecutorService executorService= Executors.newFixedThreadPool(numberOfServices);
