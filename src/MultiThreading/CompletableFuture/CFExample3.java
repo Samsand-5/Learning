@@ -2,6 +2,7 @@ package MultiThreading.CompletableFuture;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
 
 public class CFExample3 {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
@@ -32,5 +33,16 @@ public class CFExample3 {
             return "ok";
         }).thenApply(x->x+x);
         System.out.println(ff1.get());
+
+        CompletableFuture<String> ff2 = CompletableFuture.supplyAsync(() -> {
+            try {
+                Thread.sleep(5000);
+                System.out.println("worker");
+            } catch (Exception e) {
+
+            }
+            return "ok";
+        }).orTimeout(1, TimeUnit.SECONDS).exceptionally(s->"Timeout occured");
+        System.out.println(ff2.get());
     }
 }
