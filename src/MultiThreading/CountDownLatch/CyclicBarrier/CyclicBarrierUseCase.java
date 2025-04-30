@@ -23,7 +23,6 @@ public class CyclicBarrierUseCase {
         databaseThread.start();
         cacheThread.start();
         messageServiceThread.start();
-
     }
 }
 
@@ -41,8 +40,14 @@ class Subsytem implements Runnable{
 
     @Override
     public void run() {
-
+        try {
+            System.out.println(name+ " initialization started");
+            Thread.sleep(initializationTime);
+            System.out.println(name+ " initialization completed");
+            barrier.await();
+        }
+        catch (InterruptedException | BrokenBarrierException e){
+            e.printStackTrace();
+        }
     }
-
-
 }
