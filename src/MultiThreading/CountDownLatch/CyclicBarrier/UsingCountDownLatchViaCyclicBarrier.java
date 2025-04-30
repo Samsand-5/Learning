@@ -27,14 +27,10 @@ class DependentService3 implements Callable<String>{
 
     @Override
     public String call() throws Exception {
-        try {
             System.out.println(Thread.currentThread().getName()+" Service started");
             Thread.sleep(2000);
             System.out.println(Thread.currentThread().getName()+ " is waiting at barrier");
             barrier.await();
-        }
-        finally {
-        }
-        return "ok";
+            return "ok";
     }
 }
