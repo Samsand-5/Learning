@@ -11,6 +11,7 @@ public class UsingCountDownLatchViaCyclicBarrier {
         executorService.submit(new DependentService3(barrier));
         executorService.submit(new DependentService3(barrier));
 
+
         System.out.println("Main");
         executorService.shutdown();
     }
