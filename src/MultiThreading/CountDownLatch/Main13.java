@@ -12,9 +12,12 @@ public class Main13 {
         future1.get();
         future2.get();
         future3.get();
-    }
-}
 
+        System.out.println("All dependent services finished!!,Starting Main Service.....");
+        executorService.shutdown();
+    }
+
+}
 class DependentService implements Callable<String>{
 
     @Override
