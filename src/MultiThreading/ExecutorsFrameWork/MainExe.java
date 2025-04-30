@@ -8,7 +8,7 @@ public class MainExe {
 
     public static void main(String[] args) {
         long startTime=System.currentTimeMillis();
-        ExecutorService executor=Executors.newFixedThreadPool(3);
+        ExecutorService executor=Executors.newFixedThreadPool(9);
         for(int i=1;i<10;i++) {
             int finalI = i;
             executor.submit(  () ->{
