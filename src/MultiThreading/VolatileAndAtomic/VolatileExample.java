@@ -6,6 +6,7 @@ class SharedObj{
     private boolean flag=false;
 
     public void setFlagTrue(){
+        System.out.println("Writer thread made flag true");
         flag=true;
     }
 
@@ -24,7 +25,7 @@ public class VolatileExample {
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+                Thread.currentThread().interrupt();
             }
             sharedObj.setFlagTrue();
         });
