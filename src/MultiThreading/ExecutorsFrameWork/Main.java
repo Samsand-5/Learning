@@ -1,7 +1,6 @@
 package MultiThreading.ExecutorsFrameWork;
 
-public class MainExe {
-
+public class Main {
     public static void main(String[] args) {
         long startTime=System.currentTimeMillis();
         Thread[] threads=new Thread[9];
@@ -42,4 +41,3 @@ public class MainExe {
         return fact;
     }
 }
-
