@@ -50,15 +50,19 @@ public class UseOfFuture {
         Callable<Integer> callable2=()->{
             System.out.println("Task 2");
             return 2;
-        };;
+        };
         Callable<Integer> callable3=()->{
             System.out.println("Task 3");
             return 3;
-        };;
+        };
 
         List<Callable<Integer>> list=Arrays.asList(callable1,callable2,callable3);
 
         List<Future<Integer>> futures=executorService5.invokeAll(list);
+        for(Future<Integer> f: futures){
+            System.out.println(f.get());
+        }
         executorService5.shutdown();
+        System.out.println("Hello World!");
     }
 }
