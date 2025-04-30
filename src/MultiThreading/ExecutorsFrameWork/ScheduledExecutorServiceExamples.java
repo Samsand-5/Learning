@@ -2,6 +2,7 @@ package MultiThreading.ExecutorsFrameWork;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
 public class ScheduledExecutorServiceExamples {
@@ -19,6 +20,14 @@ public class ScheduledExecutorServiceExamples {
                 5,
                 5,
                 TimeUnit.SECONDS);
+
+        scheduler1.scheduleWithFixedDelay(() ->
+                        System.out.println("Task executed after every 5 seconds"),
+                5,
+                5,
+                TimeUnit.SECONDS);
+
+
         scheduler1.schedule(() ->{
             System.out.println("Initiating shutdown....");
             scheduler1.shutdown();
