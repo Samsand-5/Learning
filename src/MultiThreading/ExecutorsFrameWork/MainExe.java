@@ -2,6 +2,7 @@ package MultiThreading.ExecutorsFrameWork;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class MainExe {
 
@@ -16,6 +17,12 @@ public class MainExe {
             });
         }
         executor.shutdown();
+        try{
+            executor.awaitTermination(100, TimeUnit.SECONDS);
+        }
+        catch (InterruptedException e){
+            throw new RuntimeException(e);
+        }
         System.out.println("Total time: "+(System.currentTimeMillis()-startTime));
     }
 
