@@ -1,15 +1,18 @@
 package MultiThreading.VolatileAndAtomic;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
+//Use atomic classes when you need both atomicity and visibility for compound operations, like counters or conditional updates.
 public class VolatileCounter {
 
-    private int counter=0;
+    private AtomicInteger  counter=new AtomicInteger(0);
 
     public void increment(){
-        counter++;
+        counter.incrementAndGet();
     }
 
     public int getCounter(){
-        return counter;
+        return counter.get();
     }
 
     public static void main(String[] args) throws InterruptedException {
@@ -30,5 +33,6 @@ public class VolatileCounter {
         t2.start();
         t1.join();
         t2.join();
+        System.out.println(vc.getCounter());
     }
 }
