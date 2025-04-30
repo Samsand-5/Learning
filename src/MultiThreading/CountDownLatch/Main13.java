@@ -4,17 +4,9 @@ import java.util.concurrent.*;
 
 public class Main13 {
     public static void main(String[] args) throws ExecutionException,InterruptedException {
-        ExecutorService executorService= Executors.newFixedThreadPool(3);
-        Future<String> future1=executorService.submit(new DependentService());
-        Future<String> future2=executorService.submit(new DependentService());
-        Future<String> future3=executorService.submit(new DependentService());
-
-        future1.get();
-        future2.get();
-        future3.get();
-
-        System.out.println("All dependent services finished!!,Starting Main Service.....");
-        executorService.shutdown();
+        int numberOfServices=3;
+        ExecutorService executorService= Executors.newFixedThreadPool(numberOfServices);
+        CountDownLatch latch=new CountDownLatch(numberOfServices);
     }
 
 }
