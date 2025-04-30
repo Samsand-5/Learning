@@ -5,15 +5,12 @@ import java.util.concurrent.*;
 public class CountDownLatchUsingRunnable {
     public static void main(String[] args) throws ExecutionException,InterruptedException {
         int numberOfServices=3;
-        ExecutorService executorService= Executors.newFixedThreadPool(numberOfServices);
         CountDownLatch latch=new CountDownLatch(numberOfServices);
-        executorService.submit(new DependentService(latch));
-        executorService.submit(new DependentService(latch));
-        executorService.submit(new DependentService(latch));
+        for(int i=0;i<numberOfServices;i++){
+            new Thread(new DependentService1(latch)).start();
+        }
         latch.await();
-
         System.out.println("Main");
-        executorService.shutdown();
     }
 
 }
@@ -26,7 +23,14 @@ class DependentService1 implements Runnable {
     }
     @Override
     public void run() {
-
+        try {
+            System.out.println(Thread.currentThread().getName()+" Service started");
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        } finally {
+            latch.countDown();
+        }
     }
 }
 
