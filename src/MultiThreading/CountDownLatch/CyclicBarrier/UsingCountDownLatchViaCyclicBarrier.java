@@ -1,4 +1,4 @@
-package MultiThreading.CountDownLatch;
+package MultiThreading.CountDownLatch.CyclicBarrier;
 
 import java.util.concurrent.*;
 
