@@ -49,7 +49,16 @@ public class Main {
                 case 3:
                     System.out.print("Enter customer ID to book ride: ");
                     String id = sc.nextLine();
-
+                    /*
+                    .map(customerFound -> { ... })
+                    If the customer is found, this block is executed:
+                    Tries to book a ride for that customer using rideBookingSystem.bookRide(customerFound).
+                    If successful, prints ride details.
+                    If an exception (InvalidRideException) is thrown, it prints the error message.
+                    Returns the found customer.
+                    .orElseGet(() -> { ... })
+                    If customer not found, Prints "Customer not found." and Returns null.
+                     */
                     rideBookingSystem.customers.stream()
                             .filter(c -> c.id.equals(id))
                             .findFirst()
