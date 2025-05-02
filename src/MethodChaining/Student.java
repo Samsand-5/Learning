@@ -13,4 +13,8 @@ public class Student {
         this.id=id;
         return this;
     }
+
+    public void display() {
+        System.out.println(this.name+"  "+this.id);
+    }
 }
