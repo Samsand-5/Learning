@@ -30,11 +30,11 @@ public class Main {
             switch (option) {
                 case 1:
                     System.out.print("Enter customer ID: ");
-                    String custId = sc.nextLine();
+                    String customerId = sc.nextLine();
                     System.out.print("Enter customer Name: ");
-                    String custName = sc.nextLine();
-                    Customer cust = new Customer(custId, custName);
-                    rideBookingSystem.registerCustomer(cust);
+                    String customerName = sc.nextLine();
+                    Customer customer = new Customer(customerId, customerName);
+                    rideBookingSystem.registerCustomer(customer);
                     break;
 
                 case 2:
