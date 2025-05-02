@@ -5,13 +5,13 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        RideBookingSystem system = new RideBookingSystem();
-        system.customers = new ArrayList<>();
-        system.drivers = new ArrayList<>();
-        system.rides = new ArrayList<>();
+        RideBookingSystem rideBookingSystem = new RideBookingSystem();
+        rideBookingSystem.customers = new ArrayList<>();
+        rideBookingSystem.drivers = new ArrayList<>();
+        rideBookingSystem.rides = new ArrayList<>();
 
         try {
-            system.loadDriverFromFile();
+            rideBookingSystem.loadDriverFromFile();
         } catch (Exception e) {
             System.out.println("Failed to load drivers: " + e.getMessage());
         }
@@ -34,7 +34,7 @@ public class Main {
                     System.out.print("Enter customer Name: ");
                     String custName = sc.nextLine();
                     Customer cust = new Customer(custId, custName);
-                    system.registerCustomer(cust);
+                    rideBookingSystem.registerCustomer(cust);
                     break;
 
                 case 2:
@@ -43,19 +43,19 @@ public class Main {
                     System.out.print("Enter driver Name: ");
                     String driverName = sc.nextLine();
                     Driver driver = new Driver(driverId, driverName);
-                    system.registerDriver(driver);
+                    rideBookingSystem.registerDriver(driver);
                     break;
 
                 case 3:
                     System.out.print("Enter customer ID to book ride: ");
                     String id = sc.nextLine();
 
-                    system.customers.stream()
+                    rideBookingSystem.customers.stream()
                             .filter(c -> c.id.equals(id))
                             .findFirst()
                             .map(customerFound -> {
                                 try {
-                                    Ride ride = system.bookRide(customerFound);
+                                    Ride ride = rideBookingSystem.bookRide(customerFound);
                                     System.out.println("Ride Booked: " + ride.rideDetails());
                                 } catch (InvalidRideException e) {
                                     System.out.println(e.getMessage());
@@ -69,13 +69,13 @@ public class Main {
                     break;
 
                 case 4:
-                    system.showAllDrivers();
+                    rideBookingSystem.showAllDrivers();
                     break;
 
                 case 5:
                     try {
-                        system.saveRides();
-                        system.saveDriversToFile();
+                        rideBookingSystem.saveRides();
+                        rideBookingSystem.saveDriversToFile();
                         System.out.println("Data saved. Exiting.");
                     } catch (Exception e) {
                         System.out.println("Error saving data: " + e.getMessage());
