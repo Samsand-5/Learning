@@ -1,6 +1,7 @@
 package MethodChaining;
 
 public class Student {
+
     String name;
     int id;
 
