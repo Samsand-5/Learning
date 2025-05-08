@@ -16,22 +16,35 @@ public class Order {
         this.status = "Placed";
         this.itemsOrdered = new HashMap<>();
 
+        for (Map.Entry<String,Integer> entry : requestedItems.entrySet()) {
+            FoodItem isFound = null;
+            for (FoodItem item : inventory.keySet()) {
+                if (item.getName().equalsIgnoreCase(entry.getKey())) {
+                    isFound = item;
+                    break;
+                }
+            }
+            if (isFound == null || inventory.get(isFound) < entry.getValue()) {
+                throw new InvalidOrderException("stock not available" + entry.getKey());
+            }
+            itemsOrdered.put(isFound, entry.getValue());
+        }
 
+        for (Map.Entry<FoodItem, Integer> entry : itemsOrdered.entrySet()) {
+            inventory.put(entry.getKey(), inventory.get(entry.getKey()) - entry.getValue());
+        }
+
+        DeliveryPerson deliveryPerson = deliveryPersons.stream().filter(DeliveryPerson::isAvailable).findFirst()
+                .orElseThrow(() -> new InvalidOrderException("No available delivery persons."));
+        deliveryPerson.setAvailable(false);
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public void completeOrder() {
+        status = "Delivered";
+        deliveryPerson.setAvailable(true);
     }
 
-    public DeliveryPerson getDeliveryPerson() {
-        return deliveryPerson;
-    }
-
-    public Map<FoodItem, Integer> getItemsOrdered() {
-        return itemsOrdered;
-    }
-
-    public String getStatus() {
+    public String getStatus () {
         return status;
     }
 
