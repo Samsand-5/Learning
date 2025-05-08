@@ -28,7 +28,11 @@ public class FoodItem {
         if (amount>quantity) {
             throw new InvalidOrderException("stock not available.");
         }
-        quantity -= amount;
+        quantity-=amount;
+    }
+
+    public void addQuantity(int amount) {
+        quantity+=amount;
     }
 
     @Override
