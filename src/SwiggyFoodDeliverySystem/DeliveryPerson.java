@@ -3,8 +3,8 @@ package SwiggyFoodDeliverySystem;
 public class DeliveryPerson extends User {
     private boolean available = true;
 
-    public DeliveryPerson(String id, String name) {
-        super(id, name);
+    public DeliveryPerson(String id,String name) {
+        super(id,name);
     }
 
     public boolean isAvailable() {
