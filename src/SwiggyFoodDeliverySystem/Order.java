@@ -16,5 +16,23 @@ public class Order {
         this.status = "Placed";
         this.itemsOrdered = new HashMap<>();
 
+
     }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public DeliveryPerson getDeliveryPerson() {
+        return deliveryPerson;
+    }
+
+    public Map<FoodItem, Integer> getItemsOrdered() {
+        return itemsOrdered;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
 }
