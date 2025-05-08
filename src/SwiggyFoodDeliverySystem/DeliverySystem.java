@@ -25,7 +25,6 @@ public class DeliverySystem {
         inventorys.put(item, quantity);
     }
 
-
     public Order placeOrder(Customer customer,Map<String,Integer> requestedItems) {
         Order order = new Order(customer,requestedItems,inventorys,deliveryPersons);
         orders.add(order);
