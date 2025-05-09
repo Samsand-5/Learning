@@ -8,6 +8,6 @@ public class Manager extends User{
 
     @Override
     public void showProfile() {
-
+        System.out.println("Manager " + name);
     }
 }
