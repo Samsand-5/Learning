@@ -27,7 +27,7 @@ public class Manager extends User{
         for (FoodItem fooditem:items){
             if(fooditem.getName().equals(itemName)){
                 fooditem.addQuantity(quantity);
-                System.out.println("Food reStocked");
+                System.out.println("Food Restocked");
                 return;
             }
         }
