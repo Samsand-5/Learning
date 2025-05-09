@@ -2,6 +2,7 @@ package SwiggyFoodDeliverySystem;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 @RoleCheck(role = "Manager")
 public class Manager extends User{
@@ -23,7 +24,14 @@ public class Manager extends User{
     }
 
     public void restockItem(List<FoodItem> items, String itemName, int quantity){
-
+        for (FoodItem fooditem:items){
+            if(fooditem.getName().equals(itemName)){
+                fooditem.addQuantity(quantity);
+                System.out.println("Food reStocked");
+                return;
+            }
+        }
+        System.out.println("Item not present");
     }
 
     @Override
