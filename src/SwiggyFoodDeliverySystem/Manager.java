@@ -15,9 +15,11 @@ public class Manager extends User{
             DeliveryPerson deliveryPerson=it.next();
             if(deliveryPerson.id.equals(id)){
                 it.remove();
+                System.out.println("Delivery person added");
                 return;
             }
         }
+        System.out.println("Delivery person is false");
     }
 
     public void restockItem(List<FoodItem> items, String itemName, int quantity){
