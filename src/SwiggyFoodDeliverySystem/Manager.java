@@ -23,8 +23,8 @@ public class Manager extends User{
         System.out.println("Delivery person is false");
     }
 
-    public void restockItem(List<FoodItem> items, String itemName, int quantity){
-        for (FoodItem fooditem:items){
+    public void restockItem(Map<FoodItem, Integer> items, String itemName, int quantity){
+        for (FoodItem fooditem : items.keySet()){
             if(fooditem.getName().equals(itemName)){
                 fooditem.addQuantity(quantity);
                 System.out.println("Food Restocked");
