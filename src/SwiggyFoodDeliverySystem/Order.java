@@ -48,4 +48,22 @@ public class Order {
         return status;
     }
 
+    public String orderDetails() {
+        String details = "Customer " + customer.name + "\n"
+                + "DeliveryPerson " + deliveryPerson.name + "\n";
+
+        double total = 0;
+        for (Map.Entry<FoodItem, Integer> entry : itemsOrdered.entrySet()) {
+            FoodItem item = entry.getKey();
+            int qty = entry.getValue();
+            details += item + " x " + qty + "\n";
+            total += item.getPrice() * qty;
+        }
+
+        details += "Total " + total + "\n"
+                + "Status " + status;
+
+        return details;
+    }
+
 }
