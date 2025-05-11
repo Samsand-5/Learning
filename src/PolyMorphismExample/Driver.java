@@ -13,7 +13,7 @@ public class Driver {
             scan.nextLine();
             switch(choice) {
                 case 1:
-                    addPerson();
+                    addPersonBasedOnRole();
                     break;
                 case 2:
                     university.showPeople();
@@ -25,7 +25,7 @@ public class Driver {
         }
 
     }
-    public static void addPerson() {
+    public static void addPersonBasedOnRole() {
         System.out.println("Enter 1 to add Student\nEnter 2 to add Professor");
         int choice = scan.nextInt();
         scan.nextLine();
