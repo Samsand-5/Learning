@@ -24,15 +24,19 @@ public class Manager extends User{
     }
 
     public void restockItem(Map<FoodItem, Integer> items, String itemName, int quantity){
-        for (FoodItem fooditem : items.keySet()){
-            if(fooditem.getName().equals(itemName)){
-                fooditem.addQuantity(quantity);
+        for (FoodItem foodItem : items.keySet()) {
+            if (foodItem.getName().equalsIgnoreCase(itemName)) {
+                foodItem.addQuantity(quantity);
+                items.put(foodItem, foodItem.getQuantity()); // update quantity in map
                 System.out.println("Food Restocked");
                 return;
             }
         }
-        System.out.println("Item not present");
+        FoodItem newItem = new FoodItem(itemName, 100.0, quantity); // Assuming a default price
+        items.put(newItem, quantity);
+        System.out.println("New item added and restocked");
     }
+
 
     @Override
     public void showProfile() {

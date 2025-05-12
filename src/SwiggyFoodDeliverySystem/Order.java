@@ -34,9 +34,12 @@ public class Order {
             inventory.put(entry.getKey(), inventory.get(entry.getKey()) - entry.getValue());
         }
 
-        DeliveryPerson deliveryPerson = deliveryPersons.stream().filter(DeliveryPerson::isAvailable).findFirst()
+        this.deliveryPerson = deliveryPersons.stream()
+                .filter(DeliveryPerson::isAvailable)
+                .findFirst()
                 .orElseThrow(() -> new InvalidOrderException("No available delivery persons."));
-        deliveryPerson.setAvailable(false);
+        this.deliveryPerson.setAvailable(false);
+
     }
 
     public void completeOrder() {

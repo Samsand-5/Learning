@@ -6,6 +6,8 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         DeliverySystem system=new DeliverySystem();
+        system.addFoodItem(new FoodItem("biriyani", 120.0, 5), 5);
+        system.addFoodItem(new FoodItem("pizza", 150.0, 3), 3);
         Manager manager = new Manager("M1", "Admin");
 
         while (true) {
