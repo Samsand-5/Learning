@@ -33,7 +33,7 @@ public class EventBookingSystem {
 
     public void bookTicket(Attendee attendee, String eventTitle) throws InvalidBookingException{
         for (Event event:events){
-            if(event.title.equalsIgnoreCase(eventTitle)){
+            if(event.title.equalsIgnoreCase(eventTitle) && event.isAvailable()){
                 event.setAvailableTickets(event.availableTickets-1);
                 tickets.add(new Tickets(attendee, event));
                 System.out.println("Tickets booked "+attendee.name+" "+attendee.id);
