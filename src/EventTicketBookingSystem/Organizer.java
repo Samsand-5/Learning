@@ -15,4 +15,9 @@ public class Organizer extends User{
     void setActive(boolean updateActive){
         active=updateActive;
     }
+
+    @Override
+    public void showProfile() {
+        super.showProfile();
+    }
 }
