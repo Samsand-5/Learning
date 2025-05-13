@@ -17,7 +17,14 @@ public class EventBookingSystem {
         this.tickets = tickets;
     }
 
-    void registerUser(String id,String name){
-
+    void registerUser(User user){
+        if(user instanceof Attendee){
+            attendees.add((Attendee) user);
+        }
+        else{
+            organizers.add((Organizer) user);
+        }
     }
+
+
 }
