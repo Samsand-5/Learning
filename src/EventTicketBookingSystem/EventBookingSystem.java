@@ -18,5 +18,6 @@ public class EventBookingSystem {
     }
 
     void registerUser(String id,String name){
+
     }
 }

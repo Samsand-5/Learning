@@ -13,7 +13,7 @@ public class Tickets {
     }
 
     void cancel(){
-        status="Not Booked";
+        status="Cancelled";
     }
 
     String getStatus(){
@@ -21,6 +21,6 @@ public class Tickets {
     }
 
     String ticketDetails(){
-        return attendee.id+" "+attendee.name+" "+event.title;
+        return attendee.id+" "+attendee.name+" "+event.title+" "+status;
     }
 }

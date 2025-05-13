@@ -11,7 +11,7 @@ public class Event {
     }
 
     boolean isAvailable(){
-        return availableTickets==1;
+        return availableTickets>0;
     }
 
     void setAvailableTickets(int updateAvailableTickets){
