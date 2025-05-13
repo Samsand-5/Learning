@@ -1,13 +1,14 @@
 package EventTicketBookingSystem;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class EventBookingSystem {
 
-    List<Attendee> attendees;
-    List<Organizer> organizers;
-    List<Event> events;
-    List<Tickets> tickets;
+    List<Attendee> attendees = new ArrayList<>();;
+    List<Organizer> organizers = new ArrayList<>();;
+    List<Event> events = new ArrayList<>();;
+    List<Tickets> tickets = new ArrayList<>();;
 
     public EventBookingSystem(List<Attendee> attendees, List<Organizer> organizers, List<Event> events,
                               List<Tickets> tickets) {
@@ -47,6 +48,4 @@ public class EventBookingSystem {
             System.out.println(event);
         }
     }
-
-
 }
