@@ -1,7 +1,5 @@
 package EventTicketBookingSystem;
 
-import SwiggyFoodDeliverySystem.DeliveryPerson;
-
 import java.util.Iterator;
 import java.util.List;
 
