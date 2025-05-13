@@ -16,7 +16,7 @@ public class Manager extends User{
             DeliveryPerson deliveryPerson=it.next();
             if(deliveryPerson.id.equals(id)){
                 it.remove();
-                System.out.println("Delivery person added");
+                System.out.println("Delivery person removed");
                 return;
             }
         }
