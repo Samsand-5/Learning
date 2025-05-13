@@ -29,4 +29,24 @@ public class EventBookingSystem {
     public void addEvent(Event event) {
         events.add(event);
     }
+
+    public void bookTicket(Attendee attendee, String eventTitle) throws InvalidBookingException{
+        for (Event event:events){
+            if(event.title.equalsIgnoreCase(eventTitle)){
+                event.setAvailableTickets(event.availableTickets-1);
+                tickets.add(new Tickets(attendee, event));
+                System.out.println("Tickets booked "+attendee.name+" "+attendee.id);
+                return;
+            }
+        }
+        throw new InvalidBookingException("Booking failed");
+    }
+
+    public void showEvents() {
+        for (Event event : events) {
+            System.out.println(event);
+        }
+    }
+
+
 }
