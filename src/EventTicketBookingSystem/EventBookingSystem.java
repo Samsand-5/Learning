@@ -45,7 +45,7 @@ public class EventBookingSystem {
 
     public void showEvents() {
         for (Event event : events) {
-            System.out.println(event);
+            System.out.println(event.title+" "+event.availableTickets);
         }
     }
 }
