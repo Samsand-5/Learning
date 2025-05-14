@@ -26,16 +26,33 @@ public class Contact {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String setName(String name) {
+        boolean isTrue=name.matches("^[a-zA-Z][a-zA-Z0-9]");
+        if(isTrue) {
+            this.name=name;
+            return "Y";
+        }
+        else {
+            System.out.println("Invalid Name");
+            return "N";
+        }
+
     }
 
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public String setPhoneNumber(String phoneNumber) {
+        boolean isTrue=phoneNumber.matches("[789]\\d{9}");
+        if(isTrue) {
+            this.phoneNumber=phoneNumber;
+            return "Y";
+        }
+        else {
+            System.out.println("Invalid phonenumber");
+            return "N";
+        }
     }
 
     public String getEmail() {
@@ -48,11 +65,6 @@ public class Contact {
 
     @Override
     public String toString() {
-        return "Contact{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", phoneNumber=" + phoneNumber +
-                ", email='" + email + '\'' +
-                '}';
+        return this.id+" "+this.name+" "+this.phoneNumber+" "+this.email;
     }
 }
