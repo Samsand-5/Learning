@@ -52,7 +52,7 @@ public class EventBookingSystem {
         }
     }
 
-    void loadEvents() throws Exception {
+    void saveEvents() throws Exception {
         String path="C:\\Users\\SOUMYODIP SUTRADHAR\\OneDrive\\Desktop\\Event\\events.txt";
         File file=new File(path);
         for(Attendee attendee:attendees) {
@@ -64,6 +64,29 @@ public class EventBookingSystem {
                 bw.write(message.charAt(i));
                 bw.flush();
                 fw.flush();
+            }
+        }
+    }
+
+    void loadEvents() throws Exception {
+        String path="C:\\Users\\SOUMYODIP SUTRADHAR\\OneDrive\\Desktop\\Event\\events.txt";
+        File file=new File(path);
+        try(BufferedReader br=new BufferedReader(new FileReader(file))) {
+            String line;
+            boolean isHeader = true;
+            while ((line = br.readLine()) != null) {
+                if (isHeader) {
+                    isHeader = false;
+                    continue;
+                }
+                String[] values = line.split(",");
+                String id = values[0];
+                String name = values[1];
+                String status = values[2];
+                System.out.println(id + " " + name + " " + status);
+                Attendee attendee=new Attendee(id,name);
+                EventBookingSystem obj=new EventBookingSystem(attendees,organizers,events,tickets);
+                obj.registerUser(attendee);
             }
         }
     }

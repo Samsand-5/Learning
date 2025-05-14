@@ -5,13 +5,19 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         List<Attendee> attendees = new ArrayList<>();
         List<Organizer> organizers = new ArrayList<>();
         List<Event> events = new ArrayList<>();
         List<Tickets> tickets = new ArrayList<>();
 
         EventBookingSystem system = new EventBookingSystem(attendees, organizers, events, tickets);
+
+        try {
+            system.loadEvents();
+        } catch (Exception e) {
+            System.out.println("Failed to load drivers: " + e.getMessage());
+        }
 
         Scanner sc = new Scanner(System.in);
 
@@ -79,6 +85,7 @@ public class Main {
                     break;
 
                 case 5:
+                    system.saveEvents();
                     System.out.println("Exiting...");
                     sc.close();
                     return;

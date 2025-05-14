@@ -8,7 +8,6 @@ public class Attendee extends User{
 
     @Override
     public String showProfile() {
-        System.out.println("id "+id+" "+"name "+name);
-        return null;
+        return "id "+id+" "+"name "+name;
     }
 }
