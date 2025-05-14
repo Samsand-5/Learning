@@ -17,9 +17,9 @@ class Contact
     public Contact(int id, String name, String phoneNumber, String email)
     {
         this.id = id;
-        setName(name); // validate name
-        setPhoneNumber(phoneNumber); // validate phone
-        setEmail(email); // validate email
+        setName(name);
+        setPhoneNumber(phoneNumber);
+        setEmail(email);
     }
     public Contact()
     {
@@ -87,6 +87,6 @@ class Contact
     @Override
     public String toString()
     {
-        return "ID: " + id + ", Name: " + name + ", Phone: " + phoneNumber + ", Email: " + email;
+        return "ID " + id + ", Name " + name + ", Phone " + phoneNumber + ", Email " + email;
     }
 }

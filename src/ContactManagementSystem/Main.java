@@ -87,7 +87,7 @@ public class Main
             input();
             System.out.println("Press 1 to continue");
             choice = sc.nextInt();
-            sc.nextLine(); // consume newline
+            sc.nextLine();
         } while (choice == 1);
     }
 }
