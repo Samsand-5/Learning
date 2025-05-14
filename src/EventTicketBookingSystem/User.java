@@ -9,7 +9,5 @@ public abstract class User {
         this.name=name;
     }
 
-    public void showProfile(){
-        System.out.println("id "+id+" "+"name "+name);
-    }
+    abstract void showProfile();
 }

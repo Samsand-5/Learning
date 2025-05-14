@@ -10,6 +10,11 @@ public class Admin extends User{
         super(id, name);
     }
 
+    @Override
+    void showProfile() {
+        System.out.println("id "+id+" "+"name "+name);
+    }
+
     void removeEvent(List<Event> events, String title){
         Iterator<Event> it = events.iterator();
         while (it.hasNext()){
