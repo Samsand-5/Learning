@@ -2,73 +2,88 @@ package ContactManagementSystem;
 
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-public class ContactManager {
-    private List<Contact> contactList;
+class ContactManager
+{
+    private List<Contact> contactList = new ArrayList<>();
+    private int nextId = 1;
 
-    public ContactManager() {
-        contactList = new ArrayList<>();
-    }
-
-    public void addContact(Contact contact) {
+    public void addContact(String name, String phoneNumber, String email)
+    {
+        Contact contact = new Contact(nextId++, name, phoneNumber, email);
         contactList.add(contact);
+        System.out.println("Contact added successfully.");
     }
 
-    public String searchByName(String name) {
-        int flag = 0;
-        for (Contact contacts : contactList) {
-            if (contacts.getName().equalsIgnoreCase(name)) {
-                flag = 1;
-                break;
+    public void searchByName(String name)
+    {
+        boolean found = false;
+        for (Contact contact : contactList)
+        {
+            if (contact.getName().toLowerCase().contains(name.toLowerCase()))
+            {
+                System.out.println(contact);
+                found = true;
             }
         }
-        if (flag == 1) {
-            return name + " is found";
-        } else {
-            return name + " is not found";
-        }
+        if (!found)
+            System.out.println("No contact found with that name.");
     }
-
-    public String searchByNumber(String number) {
-        int flag = 0;
-        for (Contact contacts : contactList) {
-            if (contacts.getPhoneNumber().equals(number)) {
-                flag = 1;
-                break;
-            }
-        }
-        if (flag == 1) {
-            return  number + " is found";
-        } else {
-            return number + " is not found";
-        }
-    }
-
-    public void deleteById(String id){
-        Iterator<Contact> it = contactList.iterator();
-        while (it.hasNext()){
-            Contact idExist=it.next();
-            if(idExist.getId().equalsIgnoreCase(id)){
-                it.remove();
-                System.out.println("person removed");
+    public void searchByNumber(String number)
+    {
+        for (Contact contact : contactList)
+        {
+            if (contact.getPhoneNumber().contains(number))
+            {
+                System.out.println(contact);
                 return;
             }
         }
-        System.out.println("person is not present");
+        System.out.println("No contact found with that phone number.");
     }
 
-    public void updateContact(String id, String newName, String newNumber, String newEmail) {
-        for (Contact contact : contactList) {
-            if (contact.getId().equalsIgnoreCase(id)) {
+    public void deleteById(int id)
+    {
+        boolean removed = contactList.removeIf(contact -> contact.getId() == id);
+        if (removed)
+        {
+            System.out.println("Contact deleted successfully.");
+        }
+        else
+        {
+            System.out.println("No contact found with that ID.");
+        }
+    }
+
+    public void updateContact(int id, String newName, String newNumber, String newEmail)
+    {
+        for (Contact contact : contactList)
+        {
+            if (contact.getId() == id)
+            {
                 contact.setName(newName);
                 contact.setPhoneNumber(newNumber);
                 contact.setEmail(newEmail);
-                System.out.println("Contact updated successfully");
+                System.out.println("Contact updated successfully.");
                 return;
             }
         }
-        System.out.println("No contact found");
+        System.out.println("No contact found with that ID.");
+    }
+
+    public void displayAllContacts()
+    {
+        if (contactList.isEmpty())
+        {
+            System.out.println("No contacts available.");
+        }
+        else
+        {
+            for (Contact contact : contactList)
+            {
+                System.out.println(contact);
+            }
+        }
     }
 }

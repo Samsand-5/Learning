@@ -1,70 +1,92 @@
 package ContactManagementSystem;
 
-public class Contact {
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-    private String id;
+class Contact
+{
+    private int id;
     private String name;
     private String phoneNumber;
     private String email;
 
-    public Contact(String id, String name, String phoneNumber, String email) {
+    public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
+            Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+    static Scanner sc = new Scanner(System.in);
+    public Contact(int id, String name, String phoneNumber, String email)
+    {
         this.id = id;
-        this.name = name;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
+        setName(name); // validate name
+        setPhoneNumber(phoneNumber); // validate phone
+        setEmail(email); // validate email
     }
+    public Contact()
+    {
 
-    public String getId() {
+    }
+    public int getId()
+    {
         return id;
     }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
-
-    public String setName(String name) {
-        boolean isTrue=name.matches("^[a-zA-Z][a-zA-Z0-9]");
-        if(isTrue) {
-            this.name=name;
-            return "Y";
-        }
-        else {
-            System.out.println("Invalid Name");
-            return "N";
-        }
-
-    }
-
-    public String getPhoneNumber() {
+    public String getPhoneNumber()
+    {
         return phoneNumber;
     }
-
-    public String setPhoneNumber(String phoneNumber) {
-        boolean isTrue=phoneNumber.matches("[789]\\d{9}");
-        if(isTrue) {
-            this.phoneNumber=phoneNumber;
-            return "Y";
-        }
-        else {
-            System.out.println("Invalid phonenumber");
-            return "N";
-        }
-    }
-
-    public String getEmail() {
+    public String getEmail()
+    {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public boolean setName(String name)
+    {
+        String regex = "^[A-Z](?=.{1,29}$)[A-Za-z]*(?:\\h+[A-Z][A-Za-z]*)*$";
+        boolean isValid = name.matches(regex);
+        if (isValid)
+        {
+            this.name = name;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
+    public boolean setPhoneNumber(String phoneNumber)
+    {
+        boolean isValid = phoneNumber.matches("^[6-9]\\d{9}$");
+        if (isValid)
+        {
+            this.phoneNumber = phoneNumber;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public boolean setEmail(String email)
+    {
+        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(email);
+        if (matcher.matches())
+        {
+            this.email = email;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     @Override
-    public String toString() {
-        return this.id+" "+this.name+" "+this.phoneNumber+" "+this.email;
+    public String toString()
+    {
+        return "ID: " + id + ", Name: " + name + ", Phone: " + phoneNumber + ", Email: " + email;
     }
 }
