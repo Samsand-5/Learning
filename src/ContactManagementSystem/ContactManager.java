@@ -17,7 +17,7 @@ public class ContactManager {
         contactList.add(contact);
     }
 
-    public void searchByName(String name) {
+    public String searchByName(String name) {
         int flag = 0;
         for (Contact contacts : contactList) {
             if (contacts.getName().equalsIgnoreCase(name)) {
@@ -26,9 +26,9 @@ public class ContactManager {
             }
         }
         if (flag == 1) {
-            System.out.println(name + "is found");
+            return name + "is found";
         } else {
-            System.out.println(name + "is not found");
+            return name + "is not found";
         }
     }
 

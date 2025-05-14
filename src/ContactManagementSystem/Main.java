@@ -34,6 +34,17 @@ public class Main {
                     System.out.println("Enter email");
                     String email=sc.next();
                     contactManager.addContact(new Contact(id,name,number,email));
+                    break;
+
+                case 2:
+                    System.out.println("Enter name you want to search");
+                    String s=sc.nextLine();
+                    String ans = contactManager.searchByName(s);
+                    System.out.println(ans);
+                    break;
+
+                case 3:
+
                 default:
                     System.out.println("Invalid choice");
             }
