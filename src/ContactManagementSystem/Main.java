@@ -28,7 +28,7 @@ public class Main {
                     System.out.println("Enter id");
                     String id=sc.next();
                     System.out.println("Enter name");
-                    String name=sc.nextLine();
+                    String name=sc.next();
                     System.out.println("Enter phone number");
                     String number= sc.next();
                     System.out.println("Enter email");
@@ -44,7 +44,33 @@ public class Main {
                     break;
 
                 case 3:
+                    System.out.println("Enter number you want to search");
+                    String sNumber=sc.next();
+                    String res = contactManager.searchByNumber(sNumber);
+                    System.out.println(res);
+                    break;
 
+                case 4:
+                    System.out.println("Enter id you want to delete");
+                    String sid=sc.next();
+                    contactManager.deleteById(sid);
+                    break;
+
+                case 5:
+                    System.out.println("Enter id of contact which you want to upgrade the parameters");
+                    String pid=sc.next();
+                    System.out.println("Enter new name");
+                    String newName=sc.next();
+                    System.out.println("Enter new phone number");
+                    String newPhn=sc.next();
+                    System.out.println("Enter new email id");
+                    String newEmail=sc.next();
+                    contactManager.updateContact(pid,newName,newPhn,newEmail);
+
+                case 6:
+                    System.out.println("Exiting...");
+                    sc.close();
+                    return;
                 default:
                     System.out.println("Invalid choice");
             }

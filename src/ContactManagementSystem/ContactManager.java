@@ -1,6 +1,5 @@
 package ContactManagementSystem;
 
-import EventTicketBookingSystem.Event;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -26,24 +25,24 @@ public class ContactManager {
             }
         }
         if (flag == 1) {
-            return name + "is found";
+            return name + " is found";
         } else {
-            return name + "is not found";
+            return name + " is not found";
         }
     }
 
-    public void searchByNumber(String number) {
+    public String searchByNumber(String number) {
         int flag = 0;
         for (Contact contacts : contactList) {
-            if (contacts.getPhoneNumber().equalsIgnoreCase(number)) {
+            if (contacts.getPhoneNumber().equals(number)) {
                 flag = 1;
                 break;
             }
         }
         if (flag == 1) {
-            System.out.println(number + "is found");
+            return  number + " is found";
         } else {
-            System.out.println(number + "is not found");
+            return number + " is not found";
         }
     }
 
