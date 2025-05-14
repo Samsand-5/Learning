@@ -1,6 +1,9 @@
 package ContactManagementSystem;
 
+import EventTicketBookingSystem.Event;
+
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class ContactManager {
@@ -42,5 +45,18 @@ public class ContactManager {
         } else {
             System.out.println(number + "is not found");
         }
+    }
+
+    public void deleteById(String id){
+        Iterator<Contact> it = contactList.iterator();
+        while (it.hasNext()){
+            Contact idExist=it.next();
+            if(idExist.getId().equalsIgnoreCase(id)){
+                it.remove();
+                System.out.println("Event person removed");
+                return;
+            }
+        }
+        System.out.println("Event person is false");
     }
 }
