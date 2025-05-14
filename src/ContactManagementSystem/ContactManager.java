@@ -13,7 +13,7 @@ class ContactManager
     {
         Contact contact = new Contact(nextId++, name, phoneNumber, email);
         contactList.add(contact);
-        System.out.println("Contact added successfully.");
+        System.out.println("Contact added successfully");
     }
 
     public void searchByName(String name)
@@ -28,7 +28,7 @@ class ContactManager
             }
         }
         if (!found)
-            System.out.println("No contact found with that name.");
+            System.out.println("No contact found with that name");
     }
     public void searchByNumber(String number)
     {
@@ -40,7 +40,7 @@ class ContactManager
                 return;
             }
         }
-        System.out.println("No contact found with that phone number.");
+        System.out.println("No contact found with that phone number");
     }
 
     public void deleteById(int id)
@@ -48,11 +48,11 @@ class ContactManager
         boolean removed = contactList.removeIf(contact -> contact.getId() == id);
         if (removed)
         {
-            System.out.println("Contact deleted successfully.");
+            System.out.println("Contact deleted successfully");
         }
         else
         {
-            System.out.println("No contact found with that ID.");
+            System.out.println("No contact found with that ID");
         }
     }
 
@@ -65,11 +65,11 @@ class ContactManager
                 contact.setName(newName);
                 contact.setPhoneNumber(newNumber);
                 contact.setEmail(newEmail);
-                System.out.println("Contact updated successfully.");
+                System.out.println("Contact updated successfully");
                 return;
             }
         }
-        System.out.println("No contact found with that ID.");
+        System.out.println("No contact found with that ID");
     }
 
     public void displayAllContacts()

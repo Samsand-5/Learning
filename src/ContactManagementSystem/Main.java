@@ -9,11 +9,7 @@ public class Main
     static Contact contact = new Contact();
     public static void input()
     {
-        System.out.println("Welcome to Contact Manager");
-        System.out.println("---------------------------------------------------------------------------------------");
         System.out.println("Operations:\n1) Add Contact\t2) Search by Name\n3) Delete by ID\t4) Update Contact\n5) Search By Number\t6) Display All Contact");
-        System.out.println("---------------------------------------------------------------------------------------");
-
         int choice = sc.nextInt();
         sc.nextLine();
         switch (choice)
@@ -76,7 +72,7 @@ public class Main
                 cm.displayAllContacts();
                 break;
             default:
-                System.out.println("Invalid choice.");
+                System.out.println("Invalid choice");
         }
     }
 
