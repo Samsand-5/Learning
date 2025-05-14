@@ -53,10 +53,23 @@ public class ContactManager {
             Contact idExist=it.next();
             if(idExist.getId().equalsIgnoreCase(id)){
                 it.remove();
-                System.out.println("Event person removed");
+                System.out.println("person removed");
                 return;
             }
         }
-        System.out.println("Event person is false");
+        System.out.println("person is not present");
+    }
+
+    public void updateContact(String id, String newName, String newNumber, String newEmail) {
+        for (Contact contact : contactList) {
+            if (contact.getId().equalsIgnoreCase(id)) {
+                contact.setName(newName);
+                contact.setPhoneNumber(newNumber);
+                contact.setEmail(newEmail);
+                System.out.println("Contact updated successfully");
+                return;
+            }
+        }
+        System.out.println("No contact found");
     }
 }
