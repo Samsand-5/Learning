@@ -7,7 +7,8 @@ public class Attendee extends User{
     }
 
     @Override
-    public void showProfile() {
+    public String showProfile() {
         System.out.println("id "+id+" "+"name "+name);
+        return null;
     }
 }

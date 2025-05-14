@@ -1,5 +1,8 @@
 package EventTicketBookingSystem;
 
+import UberRentalSystem.Ride;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,6 +49,22 @@ public class EventBookingSystem {
     public void showEvents() {
         for (Event event:events) {
             System.out.println(event.title+" "+event.availableTickets);
+        }
+    }
+
+    void loadEvents() throws Exception {
+        String path="C:\\Users\\SOUMYODIP SUTRADHAR\\OneDrive\\Desktop\\Event\\events.txt";
+        File file=new File(path);
+        for(Attendee attendee:attendees) {
+            String message=attendee.showProfile();
+            FileWriter fw=new FileWriter(file,true);
+            BufferedWriter bw=new BufferedWriter(fw);
+
+            for(int i=0;i<message.length();i++) {
+                bw.write(message.charAt(i));
+                bw.flush();
+                fw.flush();
+            }
         }
     }
 }

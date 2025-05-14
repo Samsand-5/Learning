@@ -11,8 +11,9 @@ public class Admin extends User{
     }
 
     @Override
-    void showProfile() {
+    String showProfile() {
         System.out.println("id "+id+" "+"name "+name);
+        return null;
     }
 
     void removeEvent(List<Event> events, String title){

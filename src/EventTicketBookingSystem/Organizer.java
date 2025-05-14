@@ -17,8 +17,9 @@ public class Organizer extends User{
     }
 
     @Override
-    public void showProfile() {
+    public String showProfile() {
         System.out.println("id "+id+" "+"name "+name);
         System.out.println(" "+active);
+        return null;
     }
 }
