@@ -1,5 +1,4 @@
 package Calculator;
-import java.util.*;
 
 public class Operation {
     double operand1;
