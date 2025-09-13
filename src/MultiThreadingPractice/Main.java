@@ -12,7 +12,7 @@ public class Main {
     public static void main(String[] args) {
         // System.out.println(Thread.currentThread().getName());
         Thread childThread=new Thread(() -> count(),"child");
-        childThread.start();
+        childThread.start();//doesnot run imeediately in current thread but childThread.run() run in main thread
         count();
     }
 
