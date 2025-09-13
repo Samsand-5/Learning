@@ -13,9 +13,9 @@ public class FactorialHttpServer {
         // Create an HTTP server listening on port 8080
         HttpServer server = HttpServer.create(new InetSocketAddress(8080), 0);
 
-        int numThreads=Runtime.getRuntime().availableProcessors()*2;
+        int numThreads=Runtime.getRuntime().availableProcessors()*2;//no of cpu cores
         System.out.println(numThreads);
-        server.setExecutor(Executors.newFixedThreadPool(numThreads));
+        server.setExecutor(Executors.newFixedThreadPool(numThreads));//assign fixed thread pool to handle oncoming http requests concurrently
         // Create a context that listens for requests on /factorial
         server.createContext("/factorial", (HttpExchange exchange) -> {
             try {
