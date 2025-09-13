@@ -1,4 +1,4 @@
-package MultiThreadingPractice;
+package MultiThreadingPractice.Thread_Priority.Thread_Creation;
 
 public class Main {
 

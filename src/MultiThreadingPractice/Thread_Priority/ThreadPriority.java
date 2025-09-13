@@ -1,4 +1,4 @@
-package MultiThreadingPractice;
+package MultiThreadingPractice.Thread_Priority;
 
 public class ThreadPriority {
     public static void main(String[] args) {
