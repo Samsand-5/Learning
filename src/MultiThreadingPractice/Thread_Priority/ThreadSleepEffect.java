@@ -5,8 +5,8 @@ public class ThreadSleepEffect {
         Thread highPriorityThread = new Thread(() -> countWithSleep(1000), "High-Priority-Thread");
         Thread lowPriorityThread = new Thread(() -> countWithSleep(0), "Low-Priority-Thread");
 
-        highPriorityThread.setPriority(Thread.MAX_PRIORITY);
-        lowPriorityThread.setPriority(Thread.MIN_PRIORITY);
+        highPriorityThread.setPriority(Thread.MAX_PRIORITY);//will spend more time on sleep
+        lowPriorityThread.setPriority(Thread.MIN_PRIORITY);//will dominate output
 
         lowPriorityThread.start();
         highPriorityThread.start();
